@@ -4,21 +4,32 @@
 
 ## 简易部署
 
-MBP执行shell脚本，快捷地使用docker搭建单机伪分布式Hadoop环境
+MBP执行shell脚本，快捷地使用docker搭建单机伪分布式Hadoop环境，可用作本地测试环境
 
 1. 安装docker并启动
 
-2. 下载安装包docker-hadoop
+2. 下载安装包docker-hadoop，并解压
 
-   ...
+   [地址](https://github.com/LeonardoCaesarZ/docker-hadoop/archive/master.zip)
 
-3. 执行安装脚本
+3. 下载Hadoop，置于docker-hadoop文件夹中解压
+
+   [地址](http://apache.mirrors.pair.com/hadoop/common/hadoop-2.9.0/hadoop-2.9.0.tar.gz)
+
+4. 制作镜像
+
+   ```
+   cd docker-hadoop
+   docker build -t caesarz/hadoop .
+   ```
+
+5. 执行安装脚本
 
    ```bash
    bash deploy-all.sh
    ```
 
-4. 执行测试脚本，运行wordcount例子
+6. 执行测试脚本，运行wordcount例子
 
    ```bash
    bash test.sh
@@ -49,7 +60,7 @@ MBP执行shell脚本，快捷地使用docker搭建单机伪分布式Hadoop环境
 
 > ⚠️：并未经过测试
 
-真 · 分布式搭建：拥有N台物理机，1台作master机，N-1台作slave机。docker仓库应提前准备，各物理机应与仓库建立联系，每台物理机运行一个Hadoop容器
+真 · 分布式搭建：拥有N台物理机，1台作master机，N-1台作slave机。docker仓库应提前准备，各物理机应与仓库建立联系，每台物理机运行一个Hadoop容器。本方案用于生产环境
 
 1. 启动docker
 
@@ -131,8 +142,3 @@ MBP执行shell脚本，快捷地使用docker搭建单机伪分布式Hadoop环境
    cd docker-hadoop
    bash test.sh
    ```
-
-## 代码
-
-见...
-
